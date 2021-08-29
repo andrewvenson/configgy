@@ -105,7 +105,10 @@ cmd  - l : yabai -m window --focus south || yabai -m window --focus prev
 
 # fast focus desktop
 # cmd + alt - x : yabai -m space --focus recent
-# cmd + alt - 1 : yabai -m space --focus 1
+cmd - 1 : yabai -m space --focus 1
+cmd - 2 : yabai -m space --focus 2
+cmd - 3 : yabai -m space --focus 3
+cmd - 4 : yabai -m space --focus 4
 
 # send window to desktop and follow focus
 # shift + cmd - z : yabai -m window --space next; yabai -m space --focus next
@@ -113,11 +116,13 @@ cmd  - l : yabai -m window --focus south || yabai -m window --focus prev
 
 # focus monitor
 # ctrl + alt - z  : yabai -m display --focus prev
-# ctrl + alt - 3  : yabai -m display --focus 3
+#cmd + shift - 1  : yabai -m display --focus 1
+#cmd + shift - 2  : yabai -m display --focus 2
 
 # send window to monitor and follow focus
 # ctrl + cmd - c  : yabai -m window --display next; yabai -m display --focus next
-# ctrl + cmd - 1  : yabai -m window --display 1; yabai -m display --focus 1
+shift + cmd - 1  : yabai -m window --display 1; yabai -m display --focus 1
+shift + cmd - 2  : yabai -m window --display 2; yabai -m display --focus 2
 
 # move floating window
 # shift + ctrl - a : yabai -m window --move rel:-20:0

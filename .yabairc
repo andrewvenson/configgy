@@ -19,6 +19,7 @@ yabai -m config layout bsp
 # apps to not float
 yabai -m rule --add app="Spotify" sticky=on layer=above manage=off
 yabai -m rule --add app="Finder" sticky=on layer=above manage=off
+yabai -m rule --add app="System Preferences" sticky=on layer=above manage=off
 
 # Override default layout for space 2 only
 yabai -m config --space 2 layout float
