@@ -15,14 +15,12 @@ yabai -m config debug_output on
 
 # bsp or float (default: bsp)
 yabai -m config layout bsp
+yabai -m config --space 3 layout float
 
 # apps to not float
 yabai -m rule --add app="Spotify" sticky=on layer=above manage=off
 yabai -m rule --add app="Finder" sticky=on layer=above manage=off
 yabai -m rule --add app="System Preferences" sticky=on layer=above manage=off
-
-# Override default layout for space 2 only
-yabai -m config --space 2 layout float
 
 # New window spawns to the left if vertical split, or top if horizontal split
 yabai -m config window_placement first_child
@@ -35,7 +33,7 @@ yabai -m config top_padding    30
 yabai -m config bottom_padding 10
 yabai -m config left_padding   10
 yabai -m config right_padding  10
-yabai -m config window_gap     10
+yabai -m config window_gap     20
 
 # Override gaps for space 2 only
 yabai -m config --space 2 window_gap 0
