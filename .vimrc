@@ -8,13 +8,18 @@ set nocompatible              " be iMproved, required
 filetype off                  " required
 
 call plug#begin()
-
 Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'arcticicestudio/nord-vim'
+Plug 'shaunsingh/solarized.nvim'
 Plug 'morhetz/gruvbox'
+Plug 'ayu-theme/ayu-vim'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'arcticicestudio/nord-vim'
+Plug 'jamestthompson3/nvim-remote-containers'
 Plug 'majutsushi/tagbar'
 Plug 'tpope/vim-fugitive'
-Plug 'vim-airline/vim-airline'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'yuezk/vim-js'
 Plug 'zivyangll/git-blame.vim'
@@ -24,12 +29,13 @@ Plug 'leafgarland/typescript-vim'
 Plug 'preservim/nerdtree'
 Plug 'ryanoasis/vim-devicons'
 Plug 'vimwiki/vimwiki'
+Plug 'jparise/vim-graphql'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'neoclide/jsonc.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
 call plug#end()            " required
 
-colorscheme gruvbox
 
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 "If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
@@ -47,16 +53,25 @@ if (empty($TMUX))
   endif
 endif
 
-filetype plugin indent on    " required
+colorscheme gruvbox
+set bg=dark
 
+filetype plugin indent on
 syntax on
 
-set termguicolors
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='solarized'
+let g:airline_solarized_bg='light'
+
+let g:indent_blankline_char = '┊'
+
 set number
 set nowrap
 set visualbell
 set t_vb=
-set statusline+=%{FugitiveStatusline()}
+set foldmethod=syntax
+" Setting this opens file with no folds by default
+set nofoldenable
 set showmatch               " show matching 
 set ignorecase              " case insensitive 
 set mouse=v                 " middle-click paste with 
@@ -68,7 +83,7 @@ set expandtab               " converts tabs to white space
 set shiftwidth=4            " width for autoindents
 set autoindent              " indent a new line the same amount as the line just typed
 set wildmode=longest,list   " get bash-like tab completions
-" set cc=80                  " set an 80 column border for good coding style
+set cc=80                  " set an 80 column border for good coding style
 set mouse=a                 " enable mouse click
 set clipboard=unnamedplus   " using system clipboard
 filetype plugin on
@@ -101,7 +116,7 @@ endif
 
 
 let NERDTreeShowHidden=1
-autocmd VimEnter * NERDTree | wincmd p
+" autocmd VimEnter * NERDTree | wincmd p
 
 nnoremap <C-p> :Files<Cr>
 nnoremap <C-n> :NERDTreeFind<Cr>
@@ -110,8 +125,6 @@ nnoremap <C-m> :Rg<Cr>
 nnoremap <Leader>s :<C-u>call gitblame#echo()<CR>
 nnoremap <silent>B :Buffers<CR>
 nnoremap <silent>T :TagbarToggle<CR>
-
-
 
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
@@ -208,11 +221,11 @@ omap ac <Plug>(coc-classobj-a)
 " Remap <C-f> and <C-b> for scroll float windows/popups.
 if has('nvim-0.4.0') || has('patch-8.2.0750')
   nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  nnoremap <silent><nowait><expr> <C-a> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
   inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  inoremap <silent><nowait><expr> <C-a> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
   vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  vnoremap <silent><nowait><expr> <C-a> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
 endif
 
 " Use CTRL-S for selections ranges.
@@ -228,11 +241,6 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
 " Add `:OR` command for organize imports of the current buffer.
 command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.organizeImport')
-
-" Add (Neo)Vim's native statusline support.
-" NOTE: Please see `:h coc-status` for integrations with external plugins that
-" provide custom statusline: lightline.vim, vim-airline.
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Mappings for CoCList
 " Show all diagnostics.
