@@ -264,3 +264,4 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>j
 nnoremap <leader>gd :Gvdiff<CR>
 nnoremap gdh :diffget //2<CR>
 nnoremap gdl :diffget //3<CR>
+nnoremap <silent> {Previous-Mapping} :<C-U>TmuxNavigatePrevious<cr>
