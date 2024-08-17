@@ -4,6 +4,7 @@
 - Install [ripgrep](https://github.com/BurntSushi/ripgrep)
 - Install [ohmyzsh](https://github.com/ohmyzsh/ohmyzsh/wiki)
 - Install [tmux](https://github.com/tmux/tmux/wiki/Installing#installing-tmux)
+- Install [i3](https://i3wm.org/docs/repositories.html)
 - Make sure you have your .nvim configuration sourcing .vimrc
   - In `~/.config/nvim/init.vim` add the following:
     ```
