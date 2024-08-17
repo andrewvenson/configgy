@@ -103,4 +103,5 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 export MYVIMRC=~/.vimrc
+alias python=python3
 source ~/.nvm/nvm.sh
