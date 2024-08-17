@@ -23,4 +23,7 @@
 - Install Plugins
   - While in vim normal mode:
     - Run `:PlugInstall`
-    - Run `:CocInstall coc-pyright coc-jedi coc-prettier coc-eslint coc-tslint-plugin coc-tslint coc-tsserver coc-json coc-javascript coc-vimlsp`
+    - Run
+    ```
+    :CocInstall coc-pyright coc-jedi coc-prettier coc-eslint coc-tslint-plugin coc-tslint coc-tsserver coc-json coc-javascript coc-vimlsp
+    ```
